@@ -80,6 +80,10 @@ body {
     border-top: 5px solid #8bc34a;
 }
 
+.game-card[data-game="hideseek"] {
+    border-top: 5px solid #87CEEB;
+}
+
 .game-icon {
     font-size: 5rem;
     margin-bottom: 15px;

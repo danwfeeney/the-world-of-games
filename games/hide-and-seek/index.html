@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide and Seek Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="../../index.html" class="back-button-fixed">⬅ Back</a>
+
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🔍 Hide and Seek</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="label">Time:</span>
+                    <span id="timer">20</span>s
+                </div>
+                <div class="stat">
+                    <span class="label">Found:</span>
+                    <span id="found">0</span>/<span id="total">8</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="difficulty-selection">
+            <h3>Select Difficulty</h3>
+            <div class="difficulty-buttons">
+                <button id="easyBtn" class="btn btn-difficulty" data-difficulty="easy">
+                    Easy<br><small>70 seconds</small>
+                </button>
+                <button id="mediumBtn" class="btn btn-difficulty" data-difficulty="medium">
+                    Medium<br><small>60 seconds</small>
+                </button>
+                <button id="hardBtn" class="btn btn-difficulty" data-difficulty="hard">
+                    Hard<br><small>50 seconds</small>
+                </button>
+                <button id="extremeBtn" class="btn btn-difficulty active" data-difficulty="extreme">
+                    Extreme<br><small>20 seconds</small>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="startBtn" class="btn btn-primary">Start Game</button>
+            <button id="resetBtn" class="btn btn-secondary">Reset</button>
+        </div>
+
+        <div id="countdown" class="countdown hidden">
+            <div class="countdown-text">Get Ready!</div>
+            <div class="countdown-number">3</div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <!-- Trees -->
+            <div class="hiding-spot tree" data-spot="tree1">
+                <div class="tree-trunk"></div>
+                <div class="tree-leaves"></div>
+                <div class="hidden-character" data-id="1">👦</div>
+            </div>
+            <div class="hiding-spot tree" data-spot="tree2">
+                <div class="tree-trunk"></div>
+                <div class="tree-leaves"></div>
+                <div class="hidden-character" data-id="2">👧</div>
+            </div>
+
+            <!-- Rocks -->
+            <div class="hiding-spot rock" data-spot="rock1">
+                <div class="rock-body"></div>
+                <div class="hidden-character" data-id="3">🧒</div>
+            </div>
+            <div class="hiding-spot rock" data-spot="rock2">
+                <div class="rock-body"></div>
+                <div class="hidden-character" data-id="4">👶</div>
+            </div>
+
+            <!-- Bushes -->
+            <div class="hiding-spot bush" data-spot="bush1">
+                <div class="bush-body"></div>
+                <div class="hidden-character" data-id="5">👵</div>
+            </div>
+            <div class="hiding-spot bush" data-spot="bush2">
+                <div class="bush-body"></div>
+                <div class="hidden-character" data-id="6">👴</div>
+            </div>
+
+            <!-- Houses -->
+            <div class="hiding-spot house" data-spot="house1">
+                <div class="house-roof"></div>
+                <div class="house-wall"></div>
+                <div class="house-door"></div>
+                <div class="hidden-character" data-id="7">👨</div>
+            </div>
+            <div class="hiding-spot house" data-spot="house2">
+                <div class="house-roof"></div>
+                <div class="house-wall"></div>
+                <div class="house-door"></div>
+                <div class="hidden-character" data-id="8">👩</div>
+            </div>
+
+            <!-- Decorative elements -->
+            <div class="decoration cloud cloud1">☁️</div>
+            <div class="decoration cloud cloud2">☁️</div>
+            <div class="decoration sun">☀️</div>
+        </div>
+
+        <div id="gameOver" class="game-over hidden">
+            <div class="game-over-content">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <p id="gameOverMessage">You found <span id="finalFound">0</span> out of <span id="finalTotal">8</span> characters!</p>
+                <p id="finalScore">Final Score: <span>0</span></p>
+                <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
