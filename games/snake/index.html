@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game - Eat and Grow!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">🐍 Snake Game 🐍</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Score:</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">High Score:</span>
+                <span class="value" id="highScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div class="game-over" id="gameOver">
+                <h2>Game Over!</h2>
+                <p>Score: <span id="finalScore">0</span></p>
+                <button class="play-again-button" id="playAgainBtn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <p class="instructions">Use arrow keys or swipe to control the snake</p>
+            <div class="mobile-controls" id="mobileControls">
+                <button class="control-btn" data-direction="up">↑</button>
+                <div class="control-row">
+                    <button class="control-btn" data-direction="left">←</button>
+                    <button class="control-btn" data-direction="down">↓</button>
+                    <button class="control-btn" data-direction="right">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

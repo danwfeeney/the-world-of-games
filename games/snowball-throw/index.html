@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowball Throw - Hit the Targets!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">❄️ Snowball Throw ⛄</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Score:</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Time:</span>
+                <span class="value" id="timer">30</span>
+            </div>
+            <div class="info-item">
+                <span class="label">High Score:</span>
+                <span class="value" id="highScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="600" height="500"></canvas>
+
+            <div class="game-over" id="gameOver">
+                <h2>Time's Up!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p id="newHighScore" class="new-high-score">New High Score!</p>
+                <button class="play-again-button" id="playAgainBtn">Play Again</button>
+            </div>
+
+            <div class="start-screen" id="startScreen">
+                <h2>Ready to Throw?</h2>
+                <p>Click or tap to throw snowballs at the targets!</p>
+                <p class="instructions">Hit the snowmen to score points!</p>
+                <button class="start-button" id="startBtn">Start Game</button>
+            </div>
+        </div>
+
+        <div class="controls-info">
+            <p>Click or tap anywhere on the game area to throw snowballs!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

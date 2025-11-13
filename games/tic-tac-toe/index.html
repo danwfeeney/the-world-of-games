@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Three in a Row!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">⭕ Tic-Tac-Toe ❌</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="player-indicator" id="playerIndicator">
+                <span class="current-player">Current Player: <span id="currentPlayer">X</span></span>
+            </div>
+        </div>
+
+        <div class="game-board" id="gameBoard">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+
+        <div class="winning-message" id="winningMessage">
+            <div class="winning-content">
+                <p id="winningText">X Wins!</p>
+                <button class="play-again-button" id="playAgainBtn">Play Again</button>
+            </div>
+        </div>
+
+        <button class="reset-button" id="resetBtn">Reset Game</button>
+
+        <div class="score-board">
+            <div class="score-item">
+                <span class="score-label">X Wins:</span>
+                <span class="score-value" id="xWins">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">Draws:</span>
+                <span class="score-value" id="draws">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">O Wins:</span>
+                <span class="score-value" id="oWins">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

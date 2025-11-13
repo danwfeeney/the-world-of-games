@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worms Battle - Artillery Combat!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">🪱 Worms Battle 💥</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item team1">
+                <span class="label">Red Team:</span>
+                <span class="value" id="team1Health">100</span>
+            </div>
+            <div class="info-item current-turn">
+                <span class="turn-indicator" id="turnIndicator">Red's Turn</span>
+            </div>
+            <div class="info-item team2">
+                <span class="label">Blue Team:</span>
+                <span class="value" id="team2Health">100</span>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <label>Power: <span id="powerValue">50</span>%</label>
+                <input type="range" id="powerSlider" min="10" max="100" value="50">
+            </div>
+            <div class="control-group">
+                <label>Angle: <span id="angleValue">45</span>°</label>
+                <input type="range" id="angleSlider" min="0" max="90" value="45">
+            </div>
+            <div class="control-group">
+                <label>Wind: <span id="windValue">0</span></label>
+            </div>
+            <button class="fire-button" id="fireBtn">FIRE! 🚀</button>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="800" height="500"></canvas>
+
+            <div class="game-over" id="gameOver">
+                <h2 id="winnerText">Red Team Wins!</h2>
+                <button class="play-again-button" id="playAgainBtn">Play Again</button>
+            </div>
+
+            <div class="start-screen" id="startScreen">
+                <h2>Ready for Battle?</h2>
+                <p>Take turns firing at the enemy worms!</p>
+                <div class="instructions">
+                    <p>🎯 Adjust power and angle</p>
+                    <p>💨 Watch out for wind!</p>
+                    <p>💥 Hit enemy worms to win</p>
+                </div>
+                <button class="start-button" id="startBtn">Start Battle</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
