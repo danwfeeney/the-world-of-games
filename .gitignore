@@ -28,3 +28,6 @@ Temporary Items
 *.swp
 *.swo
 *~
+
+# Local dev tooling (machine-specific preview server)
+.claude/

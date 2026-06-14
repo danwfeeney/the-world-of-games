@@ -39,6 +39,20 @@ The classic game of three in a row! Play with a friend and see who can win the m
 - Score history saved locally
 - Winning combination highlight
 
+### 🚗 Car Dodge
+Steer your car between three lanes to dodge oncoming traffic and grab coins for bonus points. Pick Easy, Medium, or Hard — the road also speeds up the longer you survive!
+
+**Features:**
+- Three difficulty levels (Easy / Medium / Hard)
+- Difficulty ramps up over time as you survive
+- Collectible coins for bonus points
+- Throttle control — the car only moves while you hold the accelerator
+- Weapon power-ups drop at score checkpoints: collect one, then press Spacebar (or 🔥) to shoot and blow up cars
+- Crash explosion effect with flying debris
+- Tap the left/right side of the road on mobile, or arrow keys on desktop
+- Synthesised soundtrack, engine sound that revs with speed, and sound effects (Web Audio API) with a mute toggle
+- Per-difficulty high scores saved locally
+
 ## Project Structure
 
 ```
