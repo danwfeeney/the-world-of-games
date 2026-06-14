@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Car Dodge - Switch Lanes & Survive!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="mute-button" id="muteButton" aria-label="Toggle sound">🔊</button>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">🚗 Car Dodge 🚗</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Score:</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Coins:</span>
+                <span class="value" id="coins">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Speed:</span>
+                <span class="value" id="speed">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">🚀 Ammo:</span>
+                <span class="value" id="ammo">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Best:</span>
+                <span class="value" id="bestScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="360" height="560"></canvas>
+
+            <!-- Difficulty selection (shown before play) -->
+            <div class="overlay start-overlay show" id="startOverlay">
+                <h2>Choose a Level</h2>
+                <p class="overlay-text">Dodge the traffic and grab the coins!</p>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn" data-level="easy">🟢 Easy</button>
+                    <button class="difficulty-btn" data-level="medium">🟡 Medium</button>
+                    <button class="difficulty-btn" data-level="hard">🔴 Hard</button>
+                </div>
+            </div>
+
+            <!-- Game over -->
+            <div class="overlay game-over" id="gameOver">
+                <h2>Crash! 💥</h2>
+                <p class="overlay-text">Score: <span id="finalScore">0</span></p>
+                <p class="overlay-text">Coins collected: <span id="finalCoins">0</span></p>
+                <p class="overlay-text best-line" id="bestLine"></p>
+                <div class="over-buttons">
+                    <button class="play-again-button" id="playAgainBtn">Play Again</button>
+                    <button class="change-level-button" id="changeLevelBtn">Change Level</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <p class="instructions" id="instructions">
+                Switch lanes by tapping the road sides (or ⬅ ➡). Hold ▲ to accelerate, ▼ to brake (⬆ ⬇). Grab the 🚀 power-up at each checkpoint, then press Spacebar / 🔥 to blast cars!
+            </p>
+            <div class="mobile-controls" id="mobileControls">
+                <div class="control-group">
+                    <button class="control-btn" data-direction="left" aria-label="Move left">◀</button>
+                    <button class="control-btn" data-direction="right" aria-label="Move right">▶</button>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn throttle-btn" data-throttle="brake" aria-label="Brake">▼</button>
+                    <button class="control-btn throttle-btn accelerate" data-throttle="accelerate" aria-label="Accelerate">▲</button>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn fire-btn" id="fireButton" aria-label="Fire weapon">🔥</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
