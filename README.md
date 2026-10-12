@@ -77,6 +77,21 @@ Letters are hiding behind bushes, rocks, stumps and boxes! Hop around the meadow
 - Caught letters and finished words are read aloud (browser speech synthesis), plus a synthesised music-box soundtrack and sound effects, all behind a mute toggle
 - Per-difficulty high scores saved locally
 
+### ☀️ Sun Showdown
+The sun is far too hot and it's melting all the snow! Help Snowy the snowman pelt it with snowballs to cool it down before they melt into a puddle.
+
+**Features:**
+- Tap or click anywhere in the sky to throw — a dotted arc shows where the snowball will fly
+- Snowballs shrink in the sun's heat haze, so throw them fast and true
+- Dodge the sun's fireballs (or knock them out of the sky with a snowball) and its telegraphed sunbeams
+- Snowy shrinks as they melt — catch falling snowflakes to heal, and hit clouds to shake more loose
+- Catch 5 snowflakes to charge a MEGA snowball (Spacebar or the ❄️ button)
+- Cool the sun to bring on a snowy night, then face an even hotter sun the next day
+- The sun's face reacts: smug, ouch, angry when nearly cooled, and sleepy once it's beaten
+- Three difficulty levels (Easy / Medium / Hard) — harder suns dodge snowballs and fire sunbeams sooner
+- Synthesised jingly soundtrack and sound effects (Web Audio API) with a mute toggle
+- Per-difficulty high scores saved locally
+
 ## Project Structure
 
 ```
