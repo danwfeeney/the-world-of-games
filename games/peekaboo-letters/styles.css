@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+    background: linear-gradient(135deg, #a18cd1 0%, #6c5ce7 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+    /* Stop the page itself from scrolling/bouncing when tapping the meadow on mobile */
+    overscroll-behavior: none;
+    touch-action: manipulation;
+}
+
+.container {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.mute-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    z-index: 100;
+    line-height: 1;
+}
+
+.mute-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mute-button:active {
+    transform: scale(0.95);
+}
+
+.mute-button.muted {
+    opacity: 0.65;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: #6c5ce7;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    background: white;
+    padding: 10px 18px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s ease;
+}
+
+/* The clock pulses red for the last ten seconds. */
+.info-item.low {
+    background: #ffe3e3;
+    animation: timePulse 0.8s ease-in-out infinite;
+}
+
+.info-item.low .value {
+    color: #d63031;
+    font-weight: bold;
+}
+
+.label {
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-right: 5px;
+}
+
+.value {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.game-container {
+    position: relative;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 100%;
+}
+
+#gameCanvas {
+    background: #80c75b;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: block;
+    max-width: 100%;
+    height: auto;
+    touch-action: none; /* taps on the meadow walk the fox, not scroll the page */
+    cursor: pointer;
+}
+
+/* Shared overlay (start screen + game over) */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px 28px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 10;
+    width: 85%;
+    max-width: 340px;
+    cursor: auto;
+}
+
+.overlay.show {
+    display: block;
+    animation: slideIn 0.4s ease;
+}
+
+.overlay h2 {
+    font-size: 2rem;
+    color: #6c5ce7;
+    margin-bottom: 15px;
+}
+
+.overlay-text {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.word-list {
+    font-size: 1.8rem;
+    line-height: 1.35;
+}
+
+.word-list:empty {
+    display: none;
+}
+
+.best-line {
+    color: #6c5ce7;
+    font-weight: bold;
+    min-height: 1.1rem;
+}
+
+.difficulty-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.difficulty-btn {
+    background: linear-gradient(135deg, #fd79a8 0%, #6c5ce7 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.difficulty-btn small {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: normal;
+    margin-top: 2px;
+}
+
+.difficulty-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.difficulty-btn:active {
+    transform: scale(0.97);
+}
+
+.over-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.play-again-button,
+.change-level-button {
+    border: none;
+    padding: 14px 30px;
+    border-radius: 25px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.play-again-button {
+    background: linear-gradient(135deg, #fd79a8 0%, #6c5ce7 100%);
+    color: white;
+}
+
+.change-level-button {
+    background: #f0f0f0;
+    color: #6c5ce7;
+}
+
+.play-again-button:hover,
+.change-level-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.play-again-button:active,
+.change-level-button:active {
+    transform: scale(0.97);
+}
+
+.controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dpad {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.dpad-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Stop a held arrow button from selecting text / showing a long-press menu. */
+.control-btn {
+    width: 66px;
+    height: 66px;
+    background: white;
+    border: none;
+    border-radius: 18px;
+    font-size: 1.7rem;
+    color: #6c5ce7;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.15s ease;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    line-height: 1;
+}
+
+.control-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+    transform: scale(0.92);
+    background: #f1edff;
+}
+
+.instructions {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.45;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes timePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .back-button {
+        position: static;
+        transform: none;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .game-info {
+        gap: 10px;
+    }
+
+    .info-item {
+        padding: 8px 14px;
+    }
+
+    .control-btn {
+        width: 58px;
+        height: 58px;
+        font-size: 1.5rem;
+    }
+
+    .instructions {
+        font-size: 0.9rem;
+    }
+}

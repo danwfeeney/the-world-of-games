@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Peekaboo Letters - Catch the Hiding Letters!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="mute-button" id="muteButton" aria-label="Toggle sound">🔊</button>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">🔠 Peekaboo Letters 🔠</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Score:</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Words:</span>
+                <span class="value" id="words">0</span>
+            </div>
+            <div class="info-item" id="timeItem">
+                <span class="label">Time:</span>
+                <span class="value" id="time">–</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Best:</span>
+                <span class="value" id="bestScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="512" height="548"
+                    aria-label="A meadow where letters hide behind bushes, rocks, stumps and boxes"></canvas>
+
+            <!-- Difficulty selection (shown before play) -->
+            <div class="overlay start-overlay show" id="startOverlay">
+                <h2>Choose a Level</h2>
+                <p class="overlay-text">Letters are hiding in the meadow! Hop around with the arrow keys and catch them when they peek out to spell the word.</p>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn" data-level="easy">🟢 Easy<small>3-letter words</small></button>
+                    <button class="difficulty-btn" data-level="medium">🟡 Medium<small>4-letter words</small></button>
+                    <button class="difficulty-btn" data-level="hard">🔴 Hard<small>5-letter words</small></button>
+                </div>
+            </div>
+
+            <!-- Game over -->
+            <div class="overlay game-over" id="gameOver">
+                <h2>Time's Up! ⏰</h2>
+                <p class="overlay-text">Score: <span id="finalScore">0</span></p>
+                <p class="overlay-text">Words spelled: <span id="finalWords">0</span></p>
+                <p class="overlay-text word-list" id="wordList"></p>
+                <p class="overlay-text best-line" id="bestLine"></p>
+                <div class="over-buttons">
+                    <button class="play-again-button" id="playAgainBtn">Play Again</button>
+                    <button class="change-level-button" id="changeLevelBtn">Change Level</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="dpad" id="dpad">
+                <button class="control-btn" data-direction="up" aria-label="Hop up">▲</button>
+                <div class="dpad-row">
+                    <button class="control-btn" data-direction="left" aria-label="Hop left">◀</button>
+                    <button class="control-btn" data-direction="down" aria-label="Hop down">▼</button>
+                    <button class="control-btn" data-direction="right" aria-label="Hop right">▶</button>
+                </div>
+            </div>
+            <p class="instructions">
+                Hop one step at a time with the arrow keys (or tap where you want to go).
+                Letters hide behind bushes, rocks, stumps and boxes — when one peeks out, hop onto it!
+                Catch the letters in order to spell the word. Wait until a letter pops all the way out:
+                jump in too early and it'll hide again!
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
