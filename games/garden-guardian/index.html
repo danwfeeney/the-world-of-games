@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Garden Guardian - Grow & Protect!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="mute-button" id="muteButton" aria-label="Toggle sound">🔊</button>
+    <div class="container">
+        <header class="header">
+            <a href="../../index.html" class="back-button">⬅ Back</a>
+            <h1 class="title">🌻 Garden Guardian 🌻</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Score:</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Day:</span>
+                <span class="value" id="day">1</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Flowers:</span>
+                <span class="value" id="flowers">0</span>
+            </div>
+            <div class="info-item">
+                <span class="value" id="hearts">❤️❤️❤️</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Best:</span>
+                <span class="value" id="bestScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="520" height="560"></canvas>
+
+            <!-- Difficulty selection (shown before play) -->
+            <div class="overlay start-overlay show" id="startOverlay">
+                <h2>Choose a Level</h2>
+                <p class="overlay-text">Bluebirds drop seeds — water them and grow a beautiful garden. Blast the crows and scare off the hungry critters!</p>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn" data-level="easy">🟢 Easy</button>
+                    <button class="difficulty-btn" data-level="medium">🟡 Medium</button>
+                    <button class="difficulty-btn" data-level="hard">🔴 Hard</button>
+                </div>
+            </div>
+
+            <!-- Game over -->
+            <div class="overlay game-over" id="gameOver">
+                <h2>Your Garden Wilted 🥀</h2>
+                <p class="overlay-text">Score: <span id="finalScore">0</span></p>
+                <p class="overlay-text">Flowers bloomed: <span id="finalFlowers">0</span></p>
+                <p class="overlay-text">Days survived: <span id="finalDays">1</span></p>
+                <p class="overlay-text best-line" id="bestLine"></p>
+                <div class="over-buttons">
+                    <button class="play-again-button" id="playAgainBtn">Play Again</button>
+                    <button class="change-level-button" id="changeLevelBtn">Change Level</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="tool-bar" id="toolBar">
+                <button class="tool-btn active" data-tool="water" aria-label="Watering can">💧</button>
+                <button class="tool-btn" data-tool="shotgun" aria-label="Shotgun">🔫</button>
+            </div>
+            <p class="instructions">
+                Pick a tool, then tap the garden: 💧 waters plants so they grow, and 🔫 blasts the crows
+                out of the sky — the bang scares off bunnies and snails too!
+                But don't shoot the bluebirds — they bring the seeds! (Keys: 1, 2)
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
