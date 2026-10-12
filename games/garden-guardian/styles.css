@@ -1,0 +1,348 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+    background: linear-gradient(135deg, #a8e063 0%, #38a13f 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+    /* Stop the page itself from scrolling/bouncing when tapping the garden on mobile */
+    overscroll-behavior: none;
+    touch-action: manipulation;
+}
+
+.container {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.mute-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    z-index: 100;
+    line-height: 1;
+}
+
+.mute-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mute-button:active {
+    transform: scale(0.95);
+}
+
+.mute-button.muted {
+    opacity: 0.65;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: #2e7d32;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    background: white;
+    padding: 10px 18px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.label {
+    font-weight: bold;
+    color: #2e7d32;
+    margin-right: 5px;
+}
+
+.value {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.game-container {
+    position: relative;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 100%;
+}
+
+#gameCanvas {
+    background: #87ceeb;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: block;
+    max-width: 100%;
+    height: auto;
+    touch-action: none; /* taps on the garden use the selected tool, not page scroll */
+    cursor: none;       /* the game draws its own tool cursor */
+}
+
+/* Shared overlay (start screen + game over) */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 10;
+    width: 85%;
+    max-width: 340px;
+    cursor: auto;
+}
+
+.overlay.show {
+    display: block;
+    animation: slideIn 0.4s ease;
+}
+
+.overlay h2 {
+    font-size: 2rem;
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.overlay-text {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.best-line {
+    color: #2e7d32;
+    font-weight: bold;
+    min-height: 1.1rem;
+}
+
+.difficulty-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.difficulty-btn {
+    background: linear-gradient(135deg, #7cb342 0%, #2e7d32 100%);
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.difficulty-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.difficulty-btn:active {
+    transform: scale(0.97);
+}
+
+.over-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.play-again-button,
+.change-level-button {
+    border: none;
+    padding: 14px 30px;
+    border-radius: 25px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.play-again-button {
+    background: linear-gradient(135deg, #7cb342 0%, #2e7d32 100%);
+    color: white;
+}
+
+.change-level-button {
+    background: #f0f0f0;
+    color: #2e7d32;
+}
+
+.play-again-button:hover,
+.change-level-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.play-again-button:active,
+.change-level-button:active {
+    transform: scale(0.97);
+}
+
+.controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tool-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+/* Stop a tapped tool button from selecting text / showing a long-press menu. */
+.tool-btn {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.15s ease;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    line-height: 1;
+}
+
+.tool-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tool-btn:active {
+    transform: scale(0.92);
+}
+
+.tool-btn.active {
+    border-color: #ffd54f;
+    background: #fffde7;
+    transform: scale(1.08);
+}
+
+.instructions {
+    color: white;
+    font-size: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .back-button {
+        position: static;
+        transform: none;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .game-info {
+        gap: 10px;
+    }
+
+    .info-item {
+        padding: 8px 14px;
+    }
+
+    .tool-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+
+    .instructions {
+        font-size: 0.9rem;
+    }
+}

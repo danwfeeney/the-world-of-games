@@ -53,6 +53,18 @@ Steer your car between three lanes to dodge oncoming traffic and grab coins for 
 - Synthesised soundtrack, engine sound that revs with speed, and sound effects (Web Audio API) with a mute toggle
 - Per-difficulty high scores saved locally
 
+### 🌻 Garden Guardian
+Bluebirds fly over and drop seeds — water them and watch your garden bloom! But watch out: bunnies and snails sneak in to munch your plants, and crows swoop down to peck flowers and steal seeds.
+
+**Features:**
+- Two tools: watering can 💧 and a shotgun 🔫 — blast crows out of the sky, and the bang scares off bunnies and snails too (but don't shoot the friendly bluebirds!)
+- Plants grow through four stages: seed → sprout → bud → bloom
+- Water meters — thirsty plants wilt and can dry out for good
+- Day counter with rising difficulty and three starting levels (Easy / Medium / Hard)
+- Three hearts: lose one each time a grown plant is eaten or dries out
+- Synthesised pastoral soundtrack and sound effects (Web Audio API) with a mute toggle
+- Per-difficulty high scores saved locally
+
 ## Project Structure
 
 ```

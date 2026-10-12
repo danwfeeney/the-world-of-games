@@ -88,6 +88,10 @@ body {
     border-top: 5px solid #ee5253;
 }
 
+.game-card[data-game="garden"] {
+    border-top: 5px solid #38a13f;
+}
+
 .game-icon {
     font-size: 5rem;
     margin-bottom: 15px;
